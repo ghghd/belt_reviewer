@@ -1,0 +1,19 @@
+#register{
+    width: 400px;
+    display: inline-block;
+    border: 1px solid black;
+}
+.login{
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 40px;
+    text-align: right;
+    border: 1px solid black;
+}
+legend{
+    text-align: center;
+}
+.messages{
+    color: red;
+}

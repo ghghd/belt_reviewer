@@ -1,0 +1,11 @@
+#review{
+    width: 300px;
+    display: inline-block;
+    vertical-align: top;
+}
+#books{
+    width: 300px;
+    height: 400px;
+    overflow: auto;
+    display: inline-block;
+}

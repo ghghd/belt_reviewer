@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Users</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+        <link rel="stylesheet" href="{% static './books/books.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="header">
+            <h1>Welcome, {{ user.first_name }}!</h1>
+            <a href="{% url 'books:add' %}">Add Book and Review</a>
+            <a href="{% url 'users:logout' %}">Logout</a>
+        </div>
+        <div id="review">
+            <h3>Recent Book Reviews:</h3>
+            {% for review in reviews %}
+                <fieldset>
+                    <legend><a href="{% url 'books:book' review.book.id %}">{{ review.book.title }}</a></legend>
+                    <p>Rating: {{ review.rating }} star(s)</p>
+                    <p><a href="{% url 'books:user' review.user.id %}">{{ review.user.first_name }}</a> Review: {{ review.review }}</p>
+                    <p>Posted on: {{ review.created_at|date:'F j' }}, {{ review.created_at|date:'Y' }}</p>
+                </fieldset>
+            {% endfor %}
+        </div>
+        <div id="books">
+            <h3>All Books with Reviews:</h3>
+            <ul>
+                {% for each in books %}
+                    <p><a href="{% url 'books:book' each.id %}">{{ each.title }}</a></p>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </body>
+</html>

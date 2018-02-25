@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Users</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+        <link rel="stylesheet" href="{% static './books/books.css' %}" media="screen" title="no title"  charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div id="header">
+            <a href="{% url 'books:books' %}">Home</a>
+            <a href="{% url 'books:add' %}">Add Book and Review</a>
+            <a href="{% url 'users:logout' %}">Logout</a>
+        </div>
+    </body>
+    <h2>User Alias: {{ user.first }}</h2>
+    <h4>Name: {{ user.first_name }} {{ user.last_name }}</h4>
+    <h4>Email: {{ user.email }}</h4>
+    <h4>Total Reviews: {{ count }}</h4>
+    <h4 id="posted">Posted Reviews on the following books:</h4>
+    <ul>
+        {% for each in books %}
+            <li><a href="{% url 'books:book' book=each.book.id %}">{{ each.book.title }}</a></li>
+        {% endfor %}
+    </ul>
+</html>
